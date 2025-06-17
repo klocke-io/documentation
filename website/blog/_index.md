@@ -1,7 +1,6 @@
 ---
 title: Blogs
-layout: blog-list
-aggregate: true
+outline: false
 ---
 
 ## Overview
