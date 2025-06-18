@@ -5,6 +5,7 @@ import { genFeed } from './genFeed.ts'
 
 export default defineConfig({
   srcDir: './website',
+  srcExclude: ['**/archived/**'],
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
   title: "Gardener",
@@ -25,7 +26,7 @@ export default defineConfig({
         {
           property: 'og:image',
           content: 'https://gardener.cloud/images/lp/gardener-logo.svg'
-        } 
+        }
       ],
       ['meta', { property: 'og:url', content: 'https://gardener.cloud/' }],
       //todo add analytics
@@ -53,6 +54,7 @@ export default defineConfig({
         {icon: 'youtube', link: 'https://www.youtube.com/@GardenerProject'}
       ],
       sidebar: {
+        bases: '/documentation/',
         '/documentation/': [
           {
             text: 'Getting Started',
@@ -406,7 +408,7 @@ function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: 'Documentation',
-      link: '/guide/what-is-vitepress',
+      link: '/documentation/_index.md',
     },
     {
       text: 'Blog',

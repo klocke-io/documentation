@@ -5,4 +5,4 @@ video_id: xpnZX3if9Tc
 weight: 40
 ---
 
-{{< youtube id="xpnZX3if9Tc" title="Organizing with Namespaces" >}}
+<YouTubeVideo videoId="xpnZX3if9Tc" />

@@ -5,4 +5,4 @@ video_id: mxEvAPQRwhw
 weight: 50
 ---
 
-{{< youtube id="mxEvAPQRwhw" title="Readiness != Liveness" >}}
+<YouTubeVideo videoId="mxEvAPQRwhw" />
