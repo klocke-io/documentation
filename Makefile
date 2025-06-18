@@ -36,9 +36,9 @@ test:
 
 .PHONY: startdocs
 startdocs: ## Start the local mkdocs based development environment.
-	docker build -t $(IMAGE) -f docs/Dockerfile . --load
-	docker run --rm -p 5173:5173 -v `pwd`/:/app $(IMAGE)
+	docker build -t gardener_docs -f Dockerfile . --load
+	docker run --rm -p 5173:5173 -v `pwd`/:/app gardener_docs
 
 .PHONY: cleandocs
 cleandocs: ## Remove all local mkdocs Docker images (cleanup).
-	docker container prune --force --filter "label=project=ironcore_docs"
+	docker container prune --force --filter "label=project=gardener_docs"

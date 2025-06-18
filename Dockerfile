@@ -5,6 +5,9 @@ LABEL project=gardener_docs
 # Install bash (optional but useful)
 RUN apk add --no-cache bash
 
+# Needed for VitePress last updated feature
+RUN apk add --no-cache git
+
 # Set working directory
 WORKDIR /app
 
