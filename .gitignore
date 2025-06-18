@@ -6,5 +6,5 @@ hugo/.forestry
 .DS_Store
 *.yaml
 !.github/**/*.yaml
-website/.vitepress/cache
-website/.vitepress/dist
+.vitepress/cache
+.vitepress/dist
