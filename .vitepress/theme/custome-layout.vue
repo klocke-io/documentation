@@ -24,14 +24,9 @@ const { Layout } = DefaultTheme
           </div>
 
           <div class="copyright">
-            <p>Copyright © 2019-2025 Gardener project authors.</p>
-            <div class="footer-legal-links">
-              <a href="https://www.sap.com/about/legal/terms-of-use.html" target="_blank" rel="noopener">Terms of Use</a>
-              <span class="footer-legal-sep">|</span>
-              <a href="https://www.sap.com/about/legal/terms-of-use.html" target="_blank" rel="noopener">Privacy Statement</a>
-              <span class="footer-legal-sep">|</span>
-              <a href="https://www.sap.com/about/legal/terms-of-use.html" target="_blank" rel="noopener">Legal Disclosure</a>
-            </div>
+            <p>Copyright © Linux Foundation Europe. Gardener is a project of Linux Foundation Europe.</p>
+            <p>For applicable policies including privacy policy, terms of use and trademark usage guidelines, please see https://linuxfoundation.eu.</p>
+            <p>Linux is a registered trademark of Linus Torvalds.</p>
           </div>
         </div>
       </footer>

@@ -1,5 +1,13 @@
 ---
-title: Gardener Blog
-subtext: Updates, news, and insights from the Gardener community.
-index: true
+sidebar: false
+editLink: false
+outline: false
 ---
+
+<script setup>
+import BlogIndex from '../../.vitepress/theme/components/BlogIndex.vue'
+</script>
+
+# Latest news fresh from the Garden
+
+<BlogIndex/>

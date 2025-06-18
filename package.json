@@ -1,23 +1,23 @@
 {
-  
   "name": "documentation",
   "type": "module",
   "devDependencies": {
     "autoprefixer": "^10.4.0",
     "postcss": "^8.3.7",
-    "postcss-cli": "^9.0.2"
+    "postcss-cli": "^9.0.2",
+    "vitepress-sidebar": "^1.31.1"
   },
   "dependencies": {
-    "vitepress": "^1.6.3",
-    "vue": "^3.5.16",
     "@tailwindcss/typography": "^0.5.14",
     "@types/markdown-it": "^12.2.3",
     "@types/node": "^20.11.27",
     "feed": "^4.2.2",
     "gray-matter": "^4.0.3",
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.10",
+    "vitepress": "^1.6.3",
+    "vue": "^3.5.16"
   },
-    "scripts": {
+  "scripts": {
     "docs:dev": "vitepress dev",
     "docs:build": "vitepress build",
     "docs:preview": "vitepress preview"

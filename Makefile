@@ -33,3 +33,12 @@ check-manifest:
 .PHONY: test
 test:
 	@python3 test/selenium-test.py
+
+.PHONY: startdocs
+startdocs: ## Start the local mkdocs based development environment.
+	docker build -t $(IMAGE) -f docs/Dockerfile . --load
+	docker run --rm -p 5173:5173 -v `pwd`/:/app $(IMAGE)
+
+.PHONY: cleandocs
+cleandocs: ## Remove all local mkdocs Docker images (cleanup).
+	docker container prune --force --filter "label=project=ironcore_docs"
