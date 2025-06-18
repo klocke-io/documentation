@@ -30,4 +30,5 @@ You can find the recordings and summaries of all previous public community meeti
 
 ## Gardener Bio
 
-The [Gardener Bio](./community-bio.md) page features a curated collection of links designed to help you explore Gardener and introduce it to others.
+The \[Gardener Bio\]\(\.\/community-bio.md\) page features a curated collection of links designed to help you explore Gardener and introduce it to others.
+# Todo ‼️ removed link

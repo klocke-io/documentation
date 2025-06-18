@@ -5,7 +5,7 @@ import { genFeed } from './genFeed.ts'
 
 export default defineConfig({
   srcDir: './website',
-  srcExclude: ['**/archived/**'],
+  srcExclude: ['**/archived/**', '**/community-bio.md'],
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
   title: "Gardener",
