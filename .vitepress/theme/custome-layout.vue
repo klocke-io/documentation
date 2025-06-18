@@ -1,6 +1,7 @@
 <script setup>
 import DefaultTheme from 'vitepress/theme'
 import './style.css'
+import {withBase} from "vitepress";
 const { Layout } = DefaultTheme
 </script>
 
@@ -11,7 +12,7 @@ const { Layout } = DefaultTheme
         <div class="container">
           <div class="funding-notice">
             <div class="funding-image">
-               <img src="/eu-support.png" alt="EU and German government funding logos">
+               <img :src="withBase('/eu-support.png')" alt="EU and German government funding logos">
             </div>
             <div class="funding-text">
               <p>

@@ -3,51 +3,77 @@ import { fileURLToPath, URL } from 'node:url'
 import { type DefaultTheme } from 'vitepress'
 import { genFeed } from './genFeed.ts'
 import styles from './theme/styles.css'
+// @ts-ignore
+import { getBlogSidebar } from './utils/blogSidebar'
 
 export default defineConfig({
   srcDir: './website',
-  base: '/documentation/',
+  base: '/gardener/',
+  cleanUrls: true,
   srcExclude: ['**/archived/**', '**/community-bio.md'],
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
   title: "Gardener",
-      head: [
-      [
-        'link',
-        { rel: 'icon', type: 'image/svg+xml', href: './gardener-logo.svg' }
-      ],
-      [
-        'link',
-        { rel: 'icon', type: 'image/png', href: './gardener-logo.svg' }
-      ],
-      ['meta', { name: 'theme-color', content: '#5f67ee' }],
-      ['meta', { property: 'og:type', content: 'website' }],
-      ['meta', { property: 'og:site_name', content: 'Gardener' }],
-      [
-        'meta',
-        {
-          property: 'og:image',
-          content: 'https://gardener.cloud/images/lp/gardener-logo.svg'
-        }
-      ],
-      ['meta', { property: 'og:url', content: 'https://gardener.cloud/' }],
-      //todo add analytics
-      //[
-      //  'script',
-      //  {
-      //    src: 'https://cdn.usefathom.com/script.js',
-      //    'data-site': 'AZBRSFGG',
-      //    'data-spa': 'auto',
-      //    defer: ''
-      //  }
-      //]
+  head: [
+    [
+      'link',
+      { rel: 'icon', type: 'image/svg+xml', href: '/gardener-logo.svg' }
     ],
+    [
+      'link',
+      { rel: 'icon', type: 'image/png', href: '/gardener-logo.svg' }
+    ],
+    ['meta', { name: 'theme-color', content: '#5f67ee' }],
+    ['meta', { property: 'og:type', content: 'website' }],
+    ['meta', { property: 'og:site_name', content: 'Gardener' }],
+    [
+      'meta',
+      {
+        property: 'og:image',
+        content: 'https://gardener.cloud/images/lp/gardener-logo.svg'
+      }
+    ],
+    ['meta', { property: 'og:url', content: 'https://gardener.cloud/' }],
+    //todo add analytics
+    //[
+    //  'script',
+    //  {
+    //    src: 'https://cdn.usefathom.com/script.js',
+    //    'data-site': 'AZBRSFGG',
+    //    'data-spa': 'auto',
+    //    defer: ''
+    //  }
+    //]
+  ],
 
     themeConfig: {
-      logo: { src: './gardener-logo.svg', width: 24, height: 24 },
-      nav: nav(),
+      logo: { src: '/gardener-logo.svg', width: 24, height: 24 },
+      nav: [
+        {
+          text: 'Documentation',
+         items: [
+           {text: 'User', link: './documentation/_index.md',},
+           {text: 'Operator', link: './documentation/_index.md',},
+           {text: 'Developer', link: './documentation/_index.md',},
+           {text: 'All', link: './documentation/_index.md',},
+         ]
+        },
+        {
+          text: 'Blog',
+          link: '/blog/',
+        },
+
+        {
+          text: 'Community',
+          link: '/community/_index.md',
+        },
+        {
+          text: 'Contribute',
+          link: 'https://gardener.cloud/docs/contribute/'
+        }
+      ],
       editLink: {
-        pattern: 'https://github.com/gardener/documentation/tree/master/website/:path',
+        pattern: 'https://github.com/klocke-io/documentation/tree/master/website/:path',
         text: 'Edit this page on GitHub'
       },
       socialLinks: [
@@ -56,7 +82,6 @@ export default defineConfig({
         {icon: 'youtube', link: 'https://www.youtube.com/@GardenerProject'}
       ],
       sidebar: {
-        bases: '/documentation/',
         '/documentation/': [
           {
             text: 'Getting Started',
@@ -377,7 +402,10 @@ export default defineConfig({
           { text: 'Glossary', link: '/documentation/glossary/' },
           { text: 'Resources', link: '/documentation/resources/' },
           { text: 'Contribute', link: '/documentation/contribute/' }
-        ]
+        ],
+        '/blog/': [
+          ...getBlogSidebar()
+        ],
       },
       search: {
         provider: 'local'
@@ -402,28 +430,5 @@ export default defineConfig({
       ]
     }
     },
-    buildEnd: genFeed
 
 })
-
-function nav(): DefaultTheme.NavItem[] {
-  return [
-    {
-      text: 'Documentation',
-      link: './documentation/_index.md',
-    },
-    {
-      text: 'Blog',
-      link: './blog/',
-    },
-  
-    {
-      text: 'Community',
-      link: './community/_index.md',
-    },
-    {
-      text: 'Contribute',
-      link: 'https://gardener.cloud/docs/contribute/'
-    }
-  ]
-}
