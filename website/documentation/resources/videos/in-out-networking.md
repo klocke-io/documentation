@@ -5,4 +5,4 @@ video_id: y2bhV81MfKQ
 weight: 60
 ---
 
-{{< youtube id="y2bhV81MfKQ" title="The Ins and Outs of Networking" >}}
+<YouTubeVideo videoId="y2bhV81MfKQ" />

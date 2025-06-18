@@ -5,3 +5,6 @@ hugo/resources/_gen
 hugo/.forestry
 .DS_Store
 *.yaml
+!.github/**/*.yaml
+.vitepress/cache
+.vitepress/dist

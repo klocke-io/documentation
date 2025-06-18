@@ -5,4 +5,4 @@ video_id: N6r-9ZzFgzw
 weight: 10
 ---
 
-{{< youtube id="N6r-9ZzFgzw" title="Why Kubernetes" >}}
+<YouTubeVideo videoId="N6r-9ZzFgzw" />

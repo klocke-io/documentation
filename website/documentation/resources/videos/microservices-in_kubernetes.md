@@ -5,4 +5,4 @@ video_id: YiNt4kUnnIM
 weight: 20
 ---
 
-{{< youtube id="YiNt4kUnnIM" title="High Performance Microservices with Kubernetes, Go, and gRPC" >}}
+<YouTubeVideo videoId="YiNt4kUnnIM" />

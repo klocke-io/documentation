@@ -33,3 +33,12 @@ check-manifest:
 .PHONY: test
 test:
 	@python3 test/selenium-test.py
+
+.PHONY: startdocs
+startdocs: ## Start the local mkdocs based development environment.
+	docker build -t gardener_docs -f Dockerfile . --load
+	docker run --rm -p 5173:5173 -v `pwd`/:/app gardener_docs
+
+.PHONY: cleandocs
+cleandocs: ## Remove all local mkdocs Docker images (cleanup).
+	docker container prune --force --filter "label=project=gardener_docs"
