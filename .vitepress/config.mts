@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 import { fileURLToPath, URL } from 'node:url'
 import { type DefaultTheme } from 'vitepress'
 import { genFeed } from './genFeed.ts'
+import styles from './theme/styles.css'
 
 export default defineConfig({
   srcDir: './website',
@@ -12,11 +13,11 @@ export default defineConfig({
       head: [
       [
         'link',
-        { rel: 'icon', type: 'image/svg+xml', href: '/gardener-logo.svg' }
+        { rel: 'icon', type: 'image/svg+xml', href: './gardener-logo.svg' }
       ],
       [
         'link',
-        { rel: 'icon', type: 'image/png', href: '/gardener-logo.svg' }
+        { rel: 'icon', type: 'image/png', href: './gardener-logo.svg' }
       ],
       ['meta', { name: 'theme-color', content: '#5f67ee' }],
       ['meta', { property: 'og:type', content: 'website' }],
@@ -42,7 +43,7 @@ export default defineConfig({
     ],
 
     themeConfig: {
-      logo: { src: '/gardener-logo.svg', width: 24, height: 24 },
+      logo: { src: './gardener-logo.svg', width: 24, height: 24 },
       nav: nav(),
       editLink: {
         pattern: 'https://github.com/gardener/documentation/tree/master/website/:path',
@@ -408,16 +409,16 @@ function nav(): DefaultTheme.NavItem[] {
   return [
     {
       text: 'Documentation',
-      link: '/documentation/_index.md',
+      link: './documentation/_index.md',
     },
     {
       text: 'Blog',
-      link: '/blog/',
+      link: './blog/',
     },
   
     {
       text: 'Community',
-      link: '/community/_index.md',
+      link: './community/_index.md',
     },
     {
       text: 'Contribute',
