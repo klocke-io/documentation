@@ -6,6 +6,7 @@ import styles from './theme/styles.css'
 
 export default defineConfig({
   srcDir: './website',
+  base: '/documentation/',
   srcExclude: ['**/archived/**', '**/community-bio.md'],
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
