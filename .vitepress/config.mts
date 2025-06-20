@@ -408,10 +408,68 @@ export default defineConfig({
         ],
       },
       search: {
-        provider: 'local'
+        provider: 'local',
+        detailedView: true,
+        options: {
+          miniSearch: {
+            /**
+             * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
+             */
+            options: {
+              // Configure how fields are extracted from documents
+              extractField: (document, fieldName) => {
+                // Extract frontmatter metadata for search
+                if (fieldName === 'categories' && document.frontmatter?.categories) {
+                  return Array.isArray(document.frontmatter.categories)
+                    ? document.frontmatter.categories.join(' ')
+                    : document.frontmatter.categories;
+                }
+                if (fieldName === 'tags' && document.frontmatter?.tags) {
+                  return Array.isArray(document.frontmatter.tags)
+                    ? document.frontmatter.tags.join(' ')
+                    : document.frontmatter.tags;
+                }
+                if (fieldName === 'description' && document.frontmatter?.description) {
+                  return document.frontmatter.description;
+                }
+                if (fieldName === 'page_synonyms' && document.frontmatter?.page_synonyms) {
+                  return Array.isArray(document.frontmatter.page_synonyms)
+                    ? document.frontmatter.page_synonyms.join(' ')
+                    : document.frontmatter.page_synonyms;
+                }
+                // Extract default fields
+                return document[fieldName];
+              },
+              // Custom tokenizer to handle special characters in technical docs
+              tokenize: (text) => text.toLowerCase().split(/[\s\-_/]+/),
+              // Process terms to improve search (e.g., stemming)
+              processTerm: (term) => term.toLowerCase()
+            },
+            /**
+             * @type {import('minisearch').SearchOptions}
+             */
+            searchOptions: {
+              // Fuzzy search with prefix matching for better results
+              fuzzy: 0.2,
+              prefix: true,
+              // Boosting: Give more weight to title, less to tags/categories
+              boost: {
+                title: 5,        // Most important
+                text: 3,         // Body content
+                headings: 4,     // Section headings
+                tags: 2,         // Tags metadata
+                categories: 2,   // Categories metadata
+                description: 4,  // Description field
+                page_synonyms: 3 // Synonyms/alternate terms
+              },
+              // Fields to search in
+              fields: ['title', 'text', 'headings', 'tags', 'categories', 'description', 'page_synonyms']
+            }
+          }
+        }
       }
     },
-    vite: {
+  vite: {
     resolve: {
       alias: [
         {
