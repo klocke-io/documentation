@@ -5,7 +5,8 @@
     "autoprefixer": "^10.4.0",
     "postcss": "^8.3.7",
     "postcss-cli": "^9.0.2",
-    "vitepress-plugin-autobar": "^1.0.8"
+    "vitepress-plugin-autobar": "^1.0.8",
+    "vitepress-sidebar": "^1.31.1"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.14",
