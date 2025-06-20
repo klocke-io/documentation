@@ -5,6 +5,7 @@ hugo/.forestry
 .DS_Store
 *.yaml
 !.github/**/*.yaml
+content
 
 ### Start: https://github.com/github/gitignore/blob/main/Node.gitignore ###
 # Logs

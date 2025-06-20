@@ -1,9 +1,5 @@
-manifest: https://github.com/gardener/documentation/blob/master/.docforge/hugo.yaml
-destination: hugo
-hugo: true
-hugo-structural-dirs:
-- content
-- static
+manifest: https://github.com/klocke-io/documentation/blob/master/.docforge/website.yaml
+destination: content
 content-files-formats:
 - ".md"
 - ".html"
