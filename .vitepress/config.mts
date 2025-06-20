@@ -52,10 +52,10 @@ export default defineConfig({
         {
           text: 'Documentation',
          items: [
-           {text: 'User', link: './documentation/_index.md',},
-           {text: 'Operator', link: './documentation/_index.md',},
-           {text: 'Developer', link: './documentation/_index.md',},
-           {text: 'All', link: './documentation/_index.md',},
+           {text: 'User', link: '/documentation/_index.md',},
+           {text: 'Operator', link: '/documentation/_index.md',},
+           {text: 'Developer', link: '/documentation/_index.md',},
+           {text: 'All', link: '/documentation/_index.md',},
          ]
         },
         {
