@@ -9,7 +9,7 @@ import { withSidebar } from 'vitepress-sidebar';
 
 const vitePressOptions = {
   srcDir: './content',
-  base: '/',
+  base: '/documentation',
   cleanUrls: true,
   srcExclude: ['**/archived/**', '**/community-bio.md'],
   lastUpdated: true,
@@ -69,7 +69,7 @@ const vitePressOptions = {
       },
       {
         text: 'Blogs',
-        link: '/blog/_index.md',
+        link: '/blog',
       },
       {
         text: 'Community',
