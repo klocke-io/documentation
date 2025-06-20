@@ -20,3 +20,4 @@ structure:
 - dir: public
   structure:
   - fileTree: ../website/public
+- file: ../website/index.md
