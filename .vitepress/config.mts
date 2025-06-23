@@ -28,7 +28,9 @@ const vitePressOptions = {
     '**/network-problem-detector/_index.md',
     // Custom template tag is used instead of normal markdown alert or github alert 
     // https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
-    '**/tutorials/tutorial-custom-domain-with-istio.md'
+    '**/tutorials/tutorial-custom-domain-with-istio.md',
+    //inconsistent name of logo,content/docs/dashboard/images/Show-account-details.png starts with capital  letter
+    '**/content/docs/dashboard/project-operations.md'
   ],
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
