@@ -11,7 +11,25 @@ const vitePressOptions = {
   srcDir: './content',
   base: '/documentation',
   cleanUrls: true,
-  srcExclude: ['**/archived/**', '**/community-bio.md'],
+  //ToDo fix syntax issues for markdown files on build time
+  srcExclude: [
+    '**/archived/**', 
+    // Custom template tag is used, check for alternative
+    '**/community-bio.md', 
+    // Generated api reference which uses <> so indicate consumer input, CAPS could be used instead or escape via code block ``,
+    '**/api-reference/extensions.md',
+    '**/api-reference/operator.md',
+    '**/api-reference/seedmanagement.md',
+    '**/api-reference/core-v1.md',
+    '**/api-reference/core.md',
+    '**/etcd-druid/api-reference.md',
+    '**/machine-controller-manager/documents/apis.md',
+    // Missing end tag <> used in normal text not in code block
+    '**/network-problem-detector/_index.md',
+    // Custom template tag is used instead of normal markdown alert or github alert 
+    // https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
+    '**/tutorials/tutorial-custom-domain-with-istio.md'
+  ],
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
   title: "Gardener",
