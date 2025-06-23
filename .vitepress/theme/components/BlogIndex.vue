@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { data as posts } from '../../data/blog.data'
+import {withBase} from "vitepress";
 
 function getDateTime(time: number) {
   return new Date(time).toISOString()
@@ -14,7 +15,7 @@ function getDateTime(time: number) {
           post.date.string
         }}</time>
         <h2 class="title">
-          <a :href="post.url">{{ post.title }}</a>
+          <a :href="withBase(post.url)">{{ post.title }}</a>
         </h2>
       </article>
     </li>

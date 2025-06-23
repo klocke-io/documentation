@@ -195,6 +195,7 @@ const vitePressOptions = {
 
 }
 
+//https://vitepress-sidebar.cdget.com
 export default defineConfig(withSidebar(vitePressOptions, [
   {
     documentRootPath: '/content',
