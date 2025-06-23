@@ -11,7 +11,8 @@ async function findFiles(directory) {
     let foundFiles = [];
 
     try {
-        const regex = /^[A-Z].*\.(png|jpg|svg)$/;
+        // Match any file with uppercase letters and image extensions
+        const regex = /[A-Z]+.*\.(png|jpg|jpeg|svg)$/i;
         const files = await fs.readdir(directory);
 
         for (const file of files) {
@@ -31,7 +32,10 @@ async function findFiles(directory) {
                 } else if (stats.isFile()) {
                     // Check if the filename matches our pattern
                     if (regex.test(file)) {
-                        foundFiles.push(fullPath);
+                        // Additional check to ensure the filename has uppercase letters
+                        if (file.toLowerCase() !== file) {
+                            foundFiles.push(fullPath);
+                        }
                     }
                 }
             } catch (err) {
@@ -84,7 +88,7 @@ async function renameToLowercase(filePath) {
 // Main function
 async function main() {
     const startDir = process.argv[2] || '.';
-    console.log(`Searching for image files starting with capital letters in: ${startDir}`);
+    console.log(`Searching for image files with uppercase letters in: ${startDir}`);
 
     try {
         const matchingFiles = await findFiles(startDir);
