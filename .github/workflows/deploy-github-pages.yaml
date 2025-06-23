@@ -50,6 +50,8 @@ jobs:
           DOCFORGE_CONFIG=.docforge/config.yaml GITHUB_OAUTH_TOKEN=${{ secrets.GITHUB_TOKEN }} ./docforge
       - name: Install dependencies
         run: npm ci # or pnpm install / yarn install / bun install
+      - name: Postprocessing Content
+        run: npm run post-processing  
       - name: Build with VitePress
         run: npm run docs:build # or pnpm docs:build / yarn docs:build / bun run docs:build
       - name: Upload artifact
