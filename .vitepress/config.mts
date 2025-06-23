@@ -35,6 +35,7 @@ const vitePressOptions = {
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
   title: "Gardener",
+  description: "A Managed Kubernetes Service Done Right",
   head: [
     [
       'link',
