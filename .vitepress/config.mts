@@ -45,14 +45,14 @@ const vitePressOptions = {
       'link',
       { rel: 'icon', type: 'image/png', href: '/gardener-logo.svg' }
     ],
-    ['meta', { name: 'theme-color', content: '#5f67ee' }],
+    ['meta', { name: 'theme-color', content: '#009f76' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Gardener' }],
     [
       'meta',
       {
         property: 'og:image',
-        content: 'https://gardener.cloud/images/lp/gardener-logo.svg'
+        content: 'https://github.com/klocke-io/documentation/blob/master/website/public/og-gardener.png'
       }
     ],
     ['meta', { property: 'og:url', content: 'https://gardener.cloud/' }],
