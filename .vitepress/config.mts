@@ -30,7 +30,7 @@ const vitePressOptions = {
     // https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts
     '**/tutorials/tutorial-custom-domain-with-istio.md',
     //inconsistent name of logo,content/docs/dashboard/images/Show-account-details.png starts with capital  letter
-    '**/content/docs/dashboard/project-operations.md'
+    '**/dashboard/project-operations.md',
   ],
   lastUpdated: true,
   ignoreDeadLinks: true, //ToDo fix dead links
