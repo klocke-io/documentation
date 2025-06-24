@@ -11,14 +11,17 @@ Ready to jump in? Follow these steps to get the Gardener documentation running l
 2. **Set up environment variables**
    ```bash
    export DOCFORGE_CONFIG=.docforge/config.yaml
-   export GITHUB_OAUTH_TOKEN=your_github_token  # See docs/resources/github-token-guide.md for instructions
+   export GITHUB_OAUTH_TOKEN=your_github_token 
    ```
-3. **Start the development server**
+
+To get the correct Github token -> [Getting the correct GitHub token](#getting-the-correct-github-token)
+
+1. **Start the development server**
    ```bash
    make docs-dev
    ```
 
-5. **Visit [http://localhost:5173](http://localhost:5173) in your browser** 🎉
+2. **Visit [http://localhost:5173](http://localhost:5173) in your browser** 🎉
 
 ## 📚 Understanding the Documentation Structure
 
@@ -93,3 +96,12 @@ To modify these, submit changes to their respective repositories.
 - `make docforge-download` - Get the docforge binary for your OS
 - `make docforge` - Run docforge with default config
 - `make docforge-run ARGS="..."` - Run docforge with custom parameters
+
+
+## Getting the correct GitHub token
+
+![gh-token-00](assets/gh-token-00.png)
+![gh-token-01](assets/gh-token-01.png)
+![gh-token-02](assets/gh-token-02.png)
+![gh-token-03](assets/gh-token-03.png)
+![gh-token-04](assets/gh-token-04.png)
