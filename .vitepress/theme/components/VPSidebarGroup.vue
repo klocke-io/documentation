@@ -22,42 +22,61 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-Copied and adapted from -> https://github.com/vitejs/vite/blob/9b98dcbf75546240e1609185828e18a77bac8c8d/docs/.vitepress/theme/components/YouTubeVideo.vue
+Copied and adapted from -> https://github.com/vuejs/vitepress/blob/2342269486e82b9b3f692976892f77b0792268ee/src/client/theme-default/components/VPSidebarGroup.vue
 */
 
-defineProps({
-  videoId: String,
+import type { DefaultTheme } from 'vitepress/theme'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+import VPSidebarItem from './VPSidebarItem.vue'
+
+defineProps<{
+  items: DefaultTheme.SidebarItem[]
+}>()
+
+const disableTransition = ref(true)
+
+let timer: ReturnType<typeof setTimeout> | null = null
+
+onMounted(() => {
+  timer = setTimeout(() => {
+    timer = null
+    disableTransition.value = false
+  }, 300)
+})
+
+onBeforeUnmount(() => {
+  if (timer != null) {
+    clearTimeout(timer)
+    timer = null
+  }
 })
 </script>
 
 <template>
-  <div class="full-width-youtube-video">
-    <iframe
-        width="560"
-        height="315"
-        :src="`https://www.youtube.com/embed/${videoId}`"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-    ></iframe>
+  <div
+    v-for="item in items"
+    :key="item.text"
+    class="group"
+    :class="{ 'no-transition': disableTransition }"
+  >
+    <VPSidebarItem :item :depth="0" />
   </div>
 </template>
 
 <style scoped>
-.full-width-youtube-video {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
+.no-transition :deep(.caret-icon) {
+  transition: none;
 }
 
-.full-width-youtube-video iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 0.5rem;
+.group + .group {
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 10px;
+}
+
+@media (min-width: 960px) {
+  .group {
+    padding-top: 10px;
+    width: calc(var(--vp-sidebar-width) - 64px);
+  }
 }
 </style>
