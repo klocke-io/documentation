@@ -52,7 +52,7 @@ const vitePressOptions = {
       'meta',
       {
         property: 'og:image',
-        content: 'https://github.com/klocke-io/documentation/blob/master/website/public/og-gardener.png'
+        content: 'https://raw.githubusercontent.com/klocke-io/documentation/refs/heads/master/website/public/og-gardener.png'
       }
     ],
     ['meta', { property: 'og:url', content: 'https://gardener.cloud/' }],
