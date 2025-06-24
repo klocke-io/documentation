@@ -87,9 +87,6 @@ To modify these, submit changes to their respective repositories.
 ### Documentation Development
 
 - `make docs-dev` - Start the development server with live reloading (port 5173)
-- `make docs-build` - Build the static site for production
-- `make docs-preview` - Build and preview the production site (port 4173)
-- `make docs-clean` - Clean up Docker images and containers
 
 ### Docforge (Content Gathering)
 

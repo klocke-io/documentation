@@ -206,12 +206,12 @@ export default defineConfig({
               new URL('./theme/components/VPFeature.vue', import.meta.url)
           )
         },
-        {
-          find: /^.*\/VPTeamMembersItem\.vue$/,
-          replacement: fileURLToPath(
-              new URL('./theme/components/VPTeamMembersItem.vue', import.meta.url)
-          )
-        },
+        //q{
+        //q  find: /^.*\/VPTeamMembersItem\.vue$/,
+        //q  replacement: fileURLToPath(
+        //q      new URL('./theme/components/VPTeamMembersItem.vue', import.meta.url)
+        //q  )
+        //q},
         {
           find: /^.*\/VPFooter\.vue$/,
           replacement: fileURLToPath(

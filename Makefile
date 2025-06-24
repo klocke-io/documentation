@@ -30,8 +30,18 @@ docforge: docforge-download ## Check environment and run docforge
 	@echo "Environment check passed:"
 	@echo "DOCFORGE_CONFIG: $$DOCFORGE_CONFIG"
 	@echo "GITHUB_OAUTH_TOKEN: $${GITHUB_OAUTH_TOKEN:0:5}..."
-	@echo "Running docforge..."
-	@./bin/docforge
+	@if [ -d "content" ]; then \
+		read -p "Content directory already exists. Do you want to run docforge again to update it? (y/n): " confirm; \
+		if [ "$$confirm" = "y" ] || [ "$$confirm" = "Y" ]; then \
+			echo "Running docforge..."; \
+			./bin/docforge; \
+		else \
+			echo "Skipping docforge execution."; \
+		fi; \
+	else \
+		echo "Content directory does not exist. Running docforge..."; \
+		./bin/docforge; \
+	fi
 
 .PHONY: docforge-download
 docforge-download: ## Download the appropriate docforge binary for the current OS if not present
@@ -114,38 +124,24 @@ docforge-run: docforge-download ## Check environment and run docforge with custo
 		exit 1; \
 	fi
 	@echo "Environment check passed:"
-	@echo "Running docforge"
-	@./bin/docforge
+	@if [ -d "content" ]; then \
+		read -p "Content directory already exists. Do you want to run docforge again to update it? (y/n): " confirm; \
+		if [ "$$confirm" = "y" ] || [ "$$confirm" = "Y" ]; then \
+			echo "Running docforge..."; \
+			./bin/docforge; \
+		else \
+			echo "Skipping docforge execution."; \
+		fi; \
+	else \
+		echo "Content directory does not exist. Running docforge..."; \
+		./bin/docforge; \
+	fi
 
 # VitePress documentation targets
 
 .PHONY: docs-dev
 docs-dev: docforge-run ## Run docforge and start the VitePress development server
 	@echo "Building VitePress dev environment Docker image..."
-	docker build -t gardener_docs_dev -f Dockerfile.dev . --load
+	docker build --no-cache -t gardener_docs_dev -f Dockerfile.dev . --load
 	@echo "Starting VitePress development server on port 5173..."
 	docker run --rm -p 5173:5173 -v `pwd`/:/app gardener_docs_dev
-
-.PHONY: docs-build
-docs-build: docforge-run ## Run docforge and build the VitePress site
-	@echo "Building VitePress production Docker image..."
-	docker build -t gardener_docs_build -f Dockerfile.build . --load
-	@echo "Building VitePress site..."
-	docker run --rm -v `pwd`/:/app gardener_docs_build
-
-.PHONY: docs-preview
-docs-preview: docforge-run ## Run docforge, build, and preview the VitePress site
-	@echo "Building and previewing VitePress site..."
-	docker build -t gardener_docs_build_preview -f Dockerfile.build-preview . --load
-	@echo "Starting preview server on port 4173..."
-	docker run --rm -p 4173:4173 -v `pwd`/:/app gardener_docs_build_preview
-
-.PHONY: docs-clean
-docs-clean: ## Remove all documentation-related Docker images
-	@echo "Cleaning up Docker images..."
-	docker container prune --force --filter "label=project=gardener_docs_dev"
-	docker container prune --force --filter "label=project=gardener_docs_build"
-	docker container prune --force --filter "label=project=gardener_docs_build_preview" 
-	docker image rm -f gardener_docs_dev gardener_docs_build gardener_docs_build_preview 2>/dev/null || true
-
-
