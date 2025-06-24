@@ -1,8 +1,39 @@
 import { defineConfig } from 'vitepress'
 import { fileURLToPath, URL } from 'node:url'
-import { withSidebar } from 'vitepress-sidebar';
+import { generateSidebar, withSidebar } from 'vitepress-sidebar';
 
-const vitePressOptions = {
+
+const generatedSidebar = generateSidebar(
+    [
+      {
+        documentRootPath: '/content',
+        scanStartPath: 'blog',
+        resolvePath: '/blog/',
+        collapsed: false,
+        capitalizeFirst: true,
+        // useTitleFromFrontmatter: true,
+      },
+      {
+        documentRootPath: '/content',
+        scanStartPath: 'community',
+        resolvePath: '/community/',
+        collapsed: false,
+        capitalizeFirst: true,
+        useTitleFromFrontmatter: true,
+        useFolderTitleFromIndexFile: true,
+      },
+      {
+        documentRootPath: '/content',
+        scanStartPath: 'docs',
+        resolvePath: '/docs/',
+        collapsed: true,
+        capitalizeFirst: true,
+        useTitleFromFrontmatter: true,
+      },
+    ]
+)
+
+export default defineConfig({
   srcDir: './content',
   base: '/documentation',
   cleanUrls: true,
@@ -103,8 +134,9 @@ const vitePressOptions = {
     ],
     search: {
       provider: 'local',
-    detailedView: true,
+      detailedView: true,
         options: {
+        detailedView: true,
           miniSearch: {
             /**
              * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
@@ -160,7 +192,10 @@ const vitePressOptions = {
               fields: ['title', 'text', 'headings', 'tags', 'categories', 'description', 'page_synonyms']
             }
           }
-        }}
+        }
+    },
+
+    sidebar: generatedSidebar
   },
   vite: {
     resolve: {
@@ -183,38 +218,49 @@ const vitePressOptions = {
               new URL('./theme/components/VPFooter.vue', import.meta.url)
           )
         },
-
+        {
+          find: /^.*\/VPSidebarGroup\.vue$/,
+          replacement: fileURLToPath(
+              new URL('./theme/components/VPSidebarGroup.vue', import.meta.url)
+          )
+        },
+        {
+          find: /^.*\/VPMenu\.vue$/,
+          replacement: fileURLToPath(
+              new URL('./theme/components/VPMenu.vue', import.meta.url)
+          )
+        },
       ]
     }
   },
 
-}
+})
 
-//https://vitepress-sidebar.cdget.com
-export default defineConfig(withSidebar(vitePressOptions, [
-  {
-    documentRootPath: '/content',
-    scanStartPath: 'blog',
-    resolvePath: '/blog/',
-    collapsed: false,
-    capitalizeFirst: true,
-    // useTitleFromFrontmatter: true,
-  },
-  {
-    documentRootPath: '/content',
-    scanStartPath: 'community',
-    resolvePath: '/community/',
-    collapsed: false,
-    capitalizeFirst: true,
-    useTitleFromFrontmatter: true,
-    useFolderTitleFromIndexFile: true,
-  },
-  {
-    documentRootPath: '/content',
-    scanStartPath: 'docs',
-    resolvePath: '/docs/',
-    collapsed: true,
-    capitalizeFirst: true,
-    useTitleFromFrontmatter: true,
-  },
-]))
+////https://vitepress-sidebar.cdget.com
+//export default defineConfig(withSidebar(vitePressOptions, [
+//  {
+//    documentRootPath: '/content',
+//    scanStartPath: 'blog',
+//    resolvePath: '/blog/',
+//    collapsed: false,
+//    capitalizeFirst: true,
+//    // useTitleFromFrontmatter: true,
+//  },
+//  {
+//    documentRootPath: '/content',
+//    scanStartPath: 'community',
+//    resolvePath: '/community/',
+//    collapsed: false,
+//    capitalizeFirst: true,
+//    useTitleFromFrontmatter: true,
+//    useFolderTitleFromIndexFile: true,
+//  },
+//  {
+//    documentRootPath: '/content',
+//    scanStartPath: 'docs',
+//    resolvePath: '/docs/',
+//    collapsed: true,
+//    capitalizeFirst: true,
+//    useTitleFromFrontmatter: true,
+//  },
+//]))
