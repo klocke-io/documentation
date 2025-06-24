@@ -1,81 +1,98 @@
-# Gardener Documentation
-[![REUSE status](https://api.reuse.software/badge/github.com/gardener/documentation)](https://api.reuse.software/info/github.com/gardener/documentation)
+# 🌱 Gardener Documentation
 
-## Structure
+## 🚀 Quick Start
 
-### Manifest files
+Ready to jump in? Follow these steps to get the Gardener documentation running locally:
 
-The manifest files can be found in the [.docforge](https://github.com/gardener/documentation/tree/master/.docforge) folder and they describe how the documentation will be mapped in the [https://gardener.cloud/](https://gardener.cloud/) website. The main manifest file, which is the entry point of the website build, is [website.yaml](https://github.com/gardener/documentation/blob/master/.docforge/website.yaml). It links content and other manifest files in this repository.
-At the last level of linking, it can be seen that the manifests point to manifests from other repositories in the gardener organization. An example of such a manifest is [documentation.yaml](https://github.com/gardener/documentation/blob/master/.docforge/documentation/documentation.yaml).
+1. **Prerequisites**
+   - Docker installed and running
+   - GitHub token (for API rate limits)
 
-### Content
-This repository holds cross-component documents which are linked by the manifest files and displayed in the website. These documents can be found in the [website](https://github.com/gardener/documentation/tree/master/website) directory.
-
-All documents that are related to a specific component can be found in the documentation of its repository. Such documents are aggregated on the website by using manifest files.
-
-
-*More about how this documentation is used and displayed on the website can be found in [gardener/website-generator](https://github.com/gardener/website-generator)*
-
-# Hugo website dev and maintenance
-
-## Defining Hugo's directory structure
-
-[Hugo's directory structure](https://gohugo.io/getting-started/directory-structure/) is defined via the docforge manifest ([example](https://github.com/gardener/documentation/blob/master/.docforge/hugo.yaml)).
-
-## Defining docforge configuration
-
-The image builds the website bundle with the help of a docforge config file. It needs to be mounted to the container and it's path provided via `DOCFORGE_CONFIG` environment variable. It contains information like the docforge manifest URL, github auth tokens, content file formats and any docforge customisations.
-
-## Building the image locally
-
-Initially build a local image `docker build -t testing-website-image .` or `docker build --build-arg ARCH=_linux-arm64 -t testing-website-image .` for arm.
-
-### Run using a local docforge build
-
-- Run `make build` in docforge repo
-- Copy `bin/rel/docforge-linux-arm64` from docforge to this repo root directiry
-- Change `Dockerfile` to have this line instead `COPY docforge-linux-arm64 /usr/local/bin/docforge`
-- Build `testing-website-image`
-
-## Create `compose.yaml` from `compose.yaml.tpl`
-
-Add all of the env var names holding repository host tokens in the `compose.yaml` file using `compose.yaml.tpl` as a template
-
-## Ability to run multiple websites locally
-
-Multiple docforge configurations can be placed in this directory with a `.yaml` extension. To run a specific website just place it's content to `docforge_config.yaml` and run `docker compose up`. Before switching to a new website configuration run `docker compose down`.
-
-### Local dev using `docker compose up`
-
-If you want to run the web server reflecting local changes done to some cloned repositories you need to go trough the following steps:
-
-1. Adapt `compose.yaml` by adding a volume mount entry for each repository
-   ```yaml
-    volumes:
-    - <path_to_cloned_repo_1>:/resourceMappings/<repo_1>
-    - <path_to_cloned_repo_2>:/resourceMappings/<repo_2>
-    - ...
+2. **Set up environment variables**
+   ```bash
+   export DOCFORGE_CONFIG=.docforge/config.yaml
+   export GITHUB_OAUTH_TOKEN=your_github_token  # See docs/resources/github-token-guide.md for instructions
    ```
-2. Adapt `docforge_config.yaml`
-   ```yaml
-   resourceMappings:
-     <repo_1_url>: /resourceMappings/<repo_1>
-     <repo_2_url>: /resourceMappings/<repo_2>
-     ...
+3. **Start the development server**
+   ```bash
+   make docs-dev
    ```
 
-## Dependency updates
+5. **Visit [http://localhost:5173](http://localhost:5173) in your browser** 🎉
 
-- check latest `docsy` version from https://github.com/google/docsy
-- check latest `hugo` version from https://github.com/gohugoio/hugo
-- check latest `docforge` version from  https://github.com/gardener/docforge
-- change `europe-docker.pkg.dev/gardener-project/releases/docforge:<DOCFORGE_VERSION>`, `HUGO_VERSION` and `DOCSY_VERSION` to the desired versions in the `Dockerfile`, open and merge the PR
-- rebuild the image 
-  - locally following `Building the image locally` 
-  - cicd release job
-- retrigger website cicd pipelines as image update does not trigger the cicd job
+## 📚 Understanding the Documentation Structure
 
-## Testing
+The Gardener documentation uses a **distributed documentation model** where content is gathered from multiple repositories and organized into a single website using docforge.
 
-First make sure you have `python3` installed. Then if you don't have selenium installed, run `python3 -m pip install selenium`.
-Then run the local build of the website and in another terminal session run `make test`. This will run python Selenium tests against the local website build to ensure there aren't major regressions introduced by your changes.
+### Key Locations
+
+- **Local content**: `website/` directory
+  - `website/documentation/` - Core documentation files
+  - `website/blog/` - Blog posts 
+  - `website/community/` - Community-related content
+
+- **Remote content**: 
+  - Content from other repositories is pulled in during the build process
+  - The structure is defined in `.docforge/*.yaml` manifest files
+
+### Manifest Files Explained
+
+The `.docforge/` folder contains YAML files that define the structure of the documentation site:
+
+- **`website.yaml`**: The main entry point that defines the top-level structure
+- **`documentation/documentation.yaml`**: Defines the structure of the docs section
+- Other YAML files for specific sections (extensions, adopters, etc.)
+
+Here's a simplified view of how it works:
+```
+.docforge/website.yaml            # Main structure
+  ↳ .docforge/documentation/*.yaml # Various section structures
+    ↳ Content from local files and remote repositories
+```
+
+## ✏️ Contributing
+
+### Local Content
+
+1. To modify local content, simply edit files in the `website/` directory
+2. Content changes are reflected immediately when using `make docs-dev`
+
+### Blog Posts
+
+1. Create new blog posts in `website/blog/YEAR/MONTH/your-post.md`
+2. Include front matter at the top of your file:
+   ```yaml
+   ---
+   title: Your Awesome Blog Post
+   description: "A brief description of your post"
+   date: 2025-06-24
+   authors:
+   - name: Your Name
+     email: your.email@example.com
+   ---
+   ```
+
+### Remote Content 
+
+Gardener documentation pulls content from multiple repositories. Key remote sources include:
+
+- `gardener/gardener`: Core Gardener documentation
+- `gardener/dashboard`: Dashboard documentation
+- `gardener/gardenctl-v2`: CLI documentation
+
+To modify these, submit changes to their respective repositories.
+
+## 🔧 Available Commands
+
+### Documentation Development
+
+- `make docs-dev` - Start the development server with live reloading (port 5173)
+- `make docs-build` - Build the static site for production
+- `make docs-preview` - Build and preview the production site (port 4173)
+- `make docs-clean` - Clean up Docker images and containers
+
+### Docforge (Content Gathering)
+
+- `make docforge-download` - Get the docforge binary for your OS
+- `make docforge` - Run docforge with default config
+- `make docforge-run ARGS="..."` - Run docforge with custom parameters

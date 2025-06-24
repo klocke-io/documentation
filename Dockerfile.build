@@ -1,0 +1,19 @@
+FROM node:24-alpine
+
+LABEL project=gardener_docs_build
+
+# Install required tools
+RUN apk add --no-cache bash git
+
+# Set working directory
+WORKDIR /app
+
+# Copy package.json and install dependencies
+COPY package.json package-lock.json* ./
+RUN npm ci
+
+# Copy the rest of the application
+COPY . .
+
+# Build the VitePress site
+CMD ["npm", "run", "docs:build"]
