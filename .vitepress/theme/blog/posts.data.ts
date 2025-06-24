@@ -16,17 +16,6 @@ export { data }
 export default createContentLoader('blog/**/*.md', {
   excerpt: true,
   transform(raw): Post[] {
-    // Debug what we're getting
-    console.log('Raw blog posts count:', raw.length);
-    
-    // Extract and log a sample to see the structure
-    if (raw.length > 0) {
-      console.log('First blog post sample:', {
-        url: raw[0].url,
-        frontmatter: raw[0].frontmatter
-      });
-    }
-    
     return raw
       .filter(page => {
         // Filter out index files and images
