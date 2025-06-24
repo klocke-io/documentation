@@ -1,10 +1,5 @@
 import { defineConfig } from 'vitepress'
 import { fileURLToPath, URL } from 'node:url'
-import { type DefaultTheme } from 'vitepress'
-import { genFeed } from './genFeed.ts'
-import styles from './theme/styles.css'
-// @ts-ignore
-import { getBlogSidebar } from './utils/blogSidebar'
 import { withSidebar } from 'vitepress-sidebar';
 
 const vitePressOptions = {
