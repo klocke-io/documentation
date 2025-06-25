@@ -28,6 +28,8 @@ Copied and adapted from -> https://github.com/vuejs/vitepress/blob/2342269486e82
 import type { DefaultTheme } from 'vitepress/theme'
 import { onBeforeUnmount, onMounted, ref, computed, watchEffect } from 'vue'
 import VPSidebarItem from 'vitepress/dist/client/theme-default/components/VPSidebarItem.vue'
+import { data as sidebars } from '../../data/sidebar.data'
+
 
 // Define the props for the component
 const props = defineProps<{
@@ -44,59 +46,9 @@ type SidebarDataType = {
 };
 
 const sidebarData: SidebarDataType = {
-  developer: [
-    {
-      text: 'Developer Section',
-      items: [
-        { text: 'Getting Started', link: '/dev-getting-started' },
-        { text: 'API Reference', link: '/dev-api' },
-        { text: 'Contributing', link: '/dev-contributing' }
-      ]
-    },
-    {
-      text: 'Developer Tools',
-      items: [
-        { text: 'Debugging', link: '/dev-debugging' },
-        { text: 'Testing', link: '/dev-testing' }
-      ]
-    }
-  ],
-  user: [
-    {
-      text: 'User Guide',
-      items: [
-        { text: 'Quick Start', link: '/user-quick-start' },
-        { text: 'Installation', link: '/user-installation' },
-        { text: 'Configuration', link: '/user-configuration' }
-      ]
-    },
-    {
-      text: 'Tutorials',
-      items: [
-        { text: 'Basic Tutorial', link: '/user-basic-tutorial' },
-        { text: 'Advanced Usage', link: '/user-advanced-usage' }
-      ]
-    }
-  ],
-  operator: [
-    {
-      text: 'Operator Section',
-      items: [
-        { text: 'Infrastructure Setup', link: '/operator-infrastructure' },
-        { text: 'Cluster Management', link: '/operator-cluster-mgmt' },
-        { text: 'Security Controls', link: '/operator-security' }
-      ]
-    },
-    {
-      text: 'Monitoring & Operations',
-      items: [
-        { text: 'Logs & Metrics', link: '/operator-logs' },
-        { text: 'Alerting', link: '/operator-alerts' },
-        { text: 'Troubleshooting', link: '/operator-troubleshooting' }
-      ]
-    }
-  ],
-  // 'all' doesn't need custom sidebar data - we'll use the default sidebar
+  developer: sidebars.developersSidebar,
+  user: sidebars.usersSidebar,
+  operator: sidebars.operatorsSidebar
 }
 
 // User type from localStorage (defaults to original items if not set)
@@ -105,7 +57,9 @@ const displayedItems = computed(() => {
   // Check for recognized userType that should override default sidebar
   if (userType.value && (userType.value === 'developer' || userType.value === 'user' || userType.value === 'operator')) {
     console.log(`Using custom sidebar for user type: ${userType.value}`)
-    return sidebarData[userType.value as UserType] || props.items
+    console.log(`sidebarData[userType.value as UserType]`, sidebarData[userType.value as UserType])
+    console.log(`sidebarData[userType.value as UserType].['/docs/'].items`, sidebarData[userType.value as UserType]['/docs/'].items[2].items[2])
+    return sidebarData[userType.value as UserType]['/docs/'].items || props.items
   }
   
   // "all" type or any other value - explicitly use default sidebar
@@ -114,7 +68,9 @@ const displayedItems = computed(() => {
   } else {
     console.log('Using default sidebar from config')
   }
-  
+  console.log('props.items', props.items)
+console.log('props.items[1].items[0]',props.items[1].items[0])
+
   return props.items
 })
 
@@ -201,7 +157,7 @@ onBeforeUnmount(() => {
   <div class="sidebar-container">
     <!-- User Type Indicator when custom sidebar is used -->
     <div v-if="userType && (userType === 'developer' || userType === 'user' || userType === 'operator')" class="user-type-indicator">
-      <span>Custom View: {{ userType }}</span>
+      <span>Persona: {{ userType }}</span>
       <button class="clear-button" @click="clearUserType" title="Reset to default view">
         ×
       </button>

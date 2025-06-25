@@ -1,47 +1,17 @@
 import { defineConfig } from 'vitepress'
 import { fileURLToPath, URL } from 'node:url'
-import { generateSidebar, withSidebar } from 'vitepress-sidebar';
+import {withSidebar} from 'vitepress-sidebar'
 
 
-const generatedSidebar = generateSidebar(
-    [
-      {
-        documentRootPath: '/content',
-        scanStartPath: 'blog',
-        resolvePath: '/blog/',
-        collapsed: false,
-        capitalizeFirst: true,
-        // useTitleFromFrontmatter: true,
-      },
-      {
-        documentRootPath: '/content',
-        scanStartPath: 'community',
-        resolvePath: '/community/',
-        collapsed: false,
-        capitalizeFirst: true,
-        useTitleFromFrontmatter: true,
-        useFolderTitleFromIndexFile: true,
-      },
-      {
-        documentRootPath: '/content',
-        scanStartPath: 'docs',
-        resolvePath: '/docs/',
-        collapsed: true,
-        capitalizeFirst: true,
-        useTitleFromFrontmatter: true,
-      },
-    ]
-)
-
-export default defineConfig({
+const vitePressOptions = {
   srcDir: './content',
   base: '/documentation',
   cleanUrls: true,
   //ToDo fix syntax issues for markdown files on build time
   srcExclude: [
-    '**/archived/**', 
+    '**/archived/**',
     // Custom template tag is used, check for alternative
-    '**/community-bio.md', 
+    '**/community-bio.md',
     // Generated api reference which uses <> so indicate consumer input, CAPS could be used instead or escape via code block ``,
     '**/api-reference/extensions.md',
     '**/api-reference/operator.md',
@@ -65,15 +35,15 @@ export default defineConfig({
   head: [
     [
       'link',
-      { rel: 'icon', type: 'image/svg+xml', href: '/gardener-logo.svg' }
+      {rel: 'icon', type: 'image/svg+xml', href: '/gardener-logo.svg'}
     ],
     [
       'link',
-      { rel: 'icon', type: 'image/png', href: '/gardener-logo.svg' }
+      {rel: 'icon', type: 'image/png', href: '/gardener-logo.svg'}
     ],
-    ['meta', { name: 'theme-color', content: '#009f76' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:site_name', content: 'Gardener' }],
+    ['meta', {name: 'theme-color', content: '#009f76'}],
+    ['meta', {property: 'og:type', content: 'website'}],
+    ['meta', {property: 'og:site_name', content: 'Gardener'}],
     [
       'meta',
       {
@@ -81,7 +51,7 @@ export default defineConfig({
         content: 'https://raw.githubusercontent.com/klocke-io/documentation/refs/heads/master/website/public/og-gardener.png'
       }
     ],
-    ['meta', { property: 'og:url', content: 'https://gardener.cloud/' }],
+    ['meta', {property: 'og:url', content: 'https://gardener.cloud/'}],
     //todo add analytics
     //[
     //  'script',
@@ -95,7 +65,7 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    logo: { src: '/gardener-logo.svg', width: 24, height: 24 },
+    logo: {src: '/gardener-logo.svg', width: 24, height: 24},
     nav: [
       {
         text: 'Demo',
@@ -128,74 +98,75 @@ export default defineConfig({
       text: 'Edit this page on GitHub'
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/gardener' },
-      { icon: 'slack', link: 'https://join.slack.com/t/gardener-cloud/shared_invite/zt-33c9daems-3oOorhnqOSnldZPWqGmIBw' },
+      {icon: 'github', link: 'https://github.com/gardener'},
+      {
+        icon: 'slack',
+        link: 'https://join.slack.com/t/gardener-cloud/shared_invite/zt-33c9daems-3oOorhnqOSnldZPWqGmIBw'
+      },
       {icon: 'youtube', link: 'https://www.youtube.com/@GardenerProject'}
     ],
     search: {
       provider: 'local',
       detailedView: true,
-        options: {
+      options: {
         detailedView: true,
-          miniSearch: {
-            /**
-             * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
-             */
-            options: {
-              // Configure how fields are extracted from documents
-              extractField: (document, fieldName) => {
-                // Extract frontmatter metadata for search
-                if (fieldName === 'categories' && document.frontmatter?.categories) {
-                  return Array.isArray(document.frontmatter.categories)
+        miniSearch: {
+          /**
+           * @type {Pick<import('minisearch').Options, 'extractField' | 'tokenize' | 'processTerm'>}
+           */
+          options: {
+            // Configure how fields are extracted from documents
+            extractField: (document, fieldName) => {
+              // Extract frontmatter metadata for search
+              if (fieldName === 'categories' && document.frontmatter?.categories) {
+                return Array.isArray(document.frontmatter.categories)
                     ? document.frontmatter.categories.join(' ')
                     : document.frontmatter.categories;
-                }
-                if (fieldName === 'tags' && document.frontmatter?.tags) {
-                  return Array.isArray(document.frontmatter.tags)
+              }
+              if (fieldName === 'tags' && document.frontmatter?.tags) {
+                return Array.isArray(document.frontmatter.tags)
                     ? document.frontmatter.tags.join(' ')
                     : document.frontmatter.tags;
-                }
-                if (fieldName === 'description' && document.frontmatter?.description) {
-                  return document.frontmatter.description;
-                }
-                if (fieldName === 'page_synonyms' && document.frontmatter?.page_synonyms) {
-                  return Array.isArray(document.frontmatter.page_synonyms)
+              }
+              if (fieldName === 'description' && document.frontmatter?.description) {
+                return document.frontmatter.description;
+              }
+              if (fieldName === 'page_synonyms' && document.frontmatter?.page_synonyms) {
+                return Array.isArray(document.frontmatter.page_synonyms)
                     ? document.frontmatter.page_synonyms.join(' ')
                     : document.frontmatter.page_synonyms;
-                }
-                // Extract default fields
-                return document[fieldName];
-              },
-              // Custom tokenizer to handle special characters in technical docs
-              tokenize: (text) => text.toLowerCase().split(/[\s\-_/]+/),
-              // Process terms to improve search (e.g., stemming)
-              processTerm: (term) => term.toLowerCase()
+              }
+              // Extract default fields
+              return document[fieldName];
             },
-            /**
-             * @type {import('minisearch').SearchOptions}
-             */
-            searchOptions: {
-              // Fuzzy search with prefix matching for better results
-              fuzzy: 0.2,
-              prefix: true,
-              // Boosting: Give more weight to title, less to tags/categories
-              boost: {
-                title: 5,        // Most important
-                text: 3,         // Body content
-                headings: 4,     // Section headings
-                tags: 2,         // Tags metadata
-                categories: 2,   // Categories metadata
-                description: 4,  // Description field
-                page_synonyms: 3 // Synonyms/alternate terms
-              },
-              // Fields to search in
-              fields: ['title', 'text', 'headings', 'tags', 'categories', 'description', 'page_synonyms']
-            }
+            // Custom tokenizer to handle special characters in technical docs
+            tokenize: (text) => text.toLowerCase().split(/[\s\-_/]+/),
+            // Process terms to improve search (e.g., stemming)
+            processTerm: (term) => term.toLowerCase()
+          },
+          /**
+           * @type {import('minisearch').SearchOptions}
+           */
+          searchOptions: {
+            // Fuzzy search with prefix matching for better results
+            fuzzy: 0.2,
+            prefix: true,
+            // Boosting: Give more weight to title, less to tags/categories
+            boost: {
+              title: 5,        // Most important
+              text: 3,         // Body content
+              headings: 4,     // Section headings
+              tags: 2,         // Tags metadata
+              categories: 2,   // Categories metadata
+              description: 4,  // Description field
+              page_synonyms: 3 // Synonyms/alternate terms
+            },
+            // Fields to search in
+            fields: ['title', 'text', 'headings', 'tags', 'categories', 'description', 'page_synonyms']
           }
         }
+      }
     },
-
-    sidebar: generatedSidebar
   },
   vite: {
     resolve: {
@@ -206,12 +177,18 @@ export default defineConfig({
               new URL('./theme/components/VPFeature.vue', import.meta.url)
           )
         },
-        //q{
-        //q  find: /^.*\/VPTeamMembersItem\.vue$/,
-        //q  replacement: fileURLToPath(
-        //q      new URL('./theme/components/VPTeamMembersItem.vue', import.meta.url)
-        //q  )
-        //q},
+        {
+          find: /^.*\/VPTeamMembersItem\.vue$/,
+          replacement: fileURLToPath(
+              new URL('./theme/components/VPTeamMembersItem.vue', import.meta.url)
+          )
+        },
+        {
+          find: /^.*\/VPNavBarMenuLink\.vue$/,
+          replacement: fileURLToPath(
+              new URL('./theme/components/VPNavBarMenuLink.vue', import.meta.url)
+          )
+        },
         {
           find: /^.*\/VPFooter\.vue$/,
           replacement: fileURLToPath(
@@ -233,34 +210,33 @@ export default defineConfig({
       ]
     }
   },
+}
 
-})
-
-////https://vitepress-sidebar.cdget.com
-//export default defineConfig(withSidebar(vitePressOptions, [
-//  {
-//    documentRootPath: '/content',
-//    scanStartPath: 'blog',
-//    resolvePath: '/blog/',
-//    collapsed: false,
-//    capitalizeFirst: true,
-//    // useTitleFromFrontmatter: true,
-//  },
-//  {
-//    documentRootPath: '/content',
-//    scanStartPath: 'community',
-//    resolvePath: '/community/',
-//    collapsed: false,
-//    capitalizeFirst: true,
-//    useTitleFromFrontmatter: true,
-//    useFolderTitleFromIndexFile: true,
-//  },
-//  {
-//    documentRootPath: '/content',
-//    scanStartPath: 'docs',
-//    resolvePath: '/docs/',
-//    collapsed: true,
-//    capitalizeFirst: true,
-//    useTitleFromFrontmatter: true,
-//  },
-//]))
+//https://vitepress-sidebar.cdget.com
+export default defineConfig(withSidebar(vitePressOptions, [
+  {
+    documentRootPath: '/content',
+    scanStartPath: 'blog',
+    resolvePath: '/blog/',
+    collapsed: false,
+    capitalizeFirst: true,
+    // useTitleFromFrontmatter: true,
+  },
+  {
+    documentRootPath: '/content',
+    scanStartPath: 'community',
+    resolvePath: '/community/',
+    collapsed: false,
+    capitalizeFirst: true,
+    useTitleFromFrontmatter: true,
+    useFolderTitleFromIndexFile: true,
+  },
+  {
+    documentRootPath: '/content',
+    scanStartPath: 'docs',
+    resolvePath: '/docs/',
+    collapsed: true,
+    capitalizeFirst: true,
+    useTitleFromFrontmatter: true,
+  },
+]))
