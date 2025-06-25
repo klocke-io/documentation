@@ -6,6 +6,7 @@ hugo/.forestry
 *.yaml
 !.github/**/*.yaml
 content
+.vitepress/theme/utils/debug/**
 
 ### Start: https://github.com/github/gitignore/blob/main/Node.gitignore ###
 # Logs
@@ -139,3 +140,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 ### End: https://github.com/github/gitignore/blob/main/Node.gitignore ###
+/.vitepress/data/sidebar.data.ts
+/.vitepress/config.example.ts
