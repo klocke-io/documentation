@@ -220,6 +220,9 @@ export default defineConfig(withSidebar(vitePressOptions, [
     resolvePath: '/blog/',
     collapsed: false,
     capitalizeFirst: true,
+    sortMenusByFrontmatterDate: true,
+    sortMenusOrderByDescending: true,
+    collapsed: true
     // useTitleFromFrontmatter: true,
   },
   {
