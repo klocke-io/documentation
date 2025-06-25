@@ -3,6 +3,8 @@ title: "Gardener Dashboard 1.80: Streamlined Credentials, Enhanced Cluster Views
 linkTitle: "Gardener Dashboard 1.80: Streamlined Credentials, Enhanced Cluster Views, and Real-Time Updates"
 newsSubtitle: May 19, 2025
 publishdate: 2025-05-19
+
+date: 2025-05-19
 authors:
 - avatar: https://avatars.githubusercontent.com/grolu
   login: grolu

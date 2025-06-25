@@ -3,6 +3,8 @@ title: "Gardener's Registry Cache Extension: Another Cost Saving Win and More"
 linkTitle: "Gardener's Registry Cache Extension: Another Cost Saving Win and More"
 newsSubtitle: April 22, 2024
 publishdate: 2024-04-22
+
+date: 2024-04-22
 authors:
 - name: Ismail Alidzhikov
   email: ismail.alidzhikov@sap.com

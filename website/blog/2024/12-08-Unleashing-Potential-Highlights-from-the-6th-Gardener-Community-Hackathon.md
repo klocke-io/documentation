@@ -3,6 +3,8 @@ title: "Unleashing Potential: Highlights from the 6th Gardener Community Hackath
 linkTitle: "Unleashing Potential: Highlights from the 6th Gardener Community Hackathon"
 newsSubtitle: December 08, 2024
 publishdate: 2024-12-08
+
+date: 2024-12-08
 authors:
 - name: Rafael Franzke
   email: rafael.franzke@sap.com

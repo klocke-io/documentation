@@ -3,6 +3,8 @@ title: KubeCon / CloudNativeCon Europe 2024 Highlights
 linkTitle: KubeCon / CloudNativeCon Europe 2024 Highlights
 newsSubtitle: April 05, 2024
 publishdate: 2024-04-05
+
+date: 2024-04-05
 authors:
 - name: Rafael Franzke
   email: rafael.franzke@sap.com

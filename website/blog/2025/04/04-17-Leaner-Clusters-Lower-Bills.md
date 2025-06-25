@@ -3,6 +3,8 @@ title: "Leaner Clusters, Lower Bills: How Gardener Optimized Kubernetes Compute 
 linkTitle: "Leaner Clusters, Lower Bills: How Gardener Optimized Kubernetes Compute Costs"
 newsSubtitle: April 17, 2025
 publishdate: 2025-04-17
+
+date: 2025-04-17
 authors:
 - name: Vedran Lerenc
   email: vedran.lerenc@sap.com

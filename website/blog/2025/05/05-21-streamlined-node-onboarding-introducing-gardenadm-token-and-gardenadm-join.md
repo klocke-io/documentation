@@ -3,6 +3,8 @@ title: "Streamlined Node Onboarding: Introducing `gardenadm token` and `gardenad
 linkTitle: "Streamlined Node Onboarding: Introducing `gardenadm token` and `gardenadm join`"
 newsSubtitle: May 21, 2025
 publishdate: 2025-05-21
+
+date: 2025-05-21
 authors:
 - avatar: https://avatars.githubusercontent.com/rfranzke
   email: rafael.franzke@sap.com

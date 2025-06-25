@@ -3,6 +3,8 @@ title: "Enhanced Network Flexibility: Gardener Now Supports CIDR Overlap for Non
 linkTitle: "Enhanced Network Flexibility: Gardener Now Supports CIDR Overlap for Non-HA Shoots"
 newsSubtitle: May 19, 2025
 publishdate: 2025-05-19
+
+date: 2025-05-19
 authors:
 - avatar: https://avatars.githubusercontent.com/domdom82
   email: Dominik.Froehlich@sap.com

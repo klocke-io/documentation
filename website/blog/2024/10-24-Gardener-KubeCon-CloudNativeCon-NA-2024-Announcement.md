@@ -3,6 +3,8 @@ title: "Gardener at KubeCon + CloudNativeCon North America 2024"
 linkTitle: "Gardener at KubeCon + CloudNativeCon North America 2024"
 newsSubtitle: Oct 24, 2024
 publishdate: 2024-10-24
+
+date: 2024-10-24
 authors:
 - name: Tim Usner
   email: tim.usner@sap.com

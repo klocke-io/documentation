@@ -3,6 +3,8 @@ title: PromCon EU 2024 Highlights
 linkTitle: PromCon EU 2024 Highlights
 newsSubtitle: November 06, 2024
 publishdate: 2024-11-01
+
+date: 2024-11-01
 authors:
 - name: Christoph Kleineweber
   email: c.kleineweber@sap.com

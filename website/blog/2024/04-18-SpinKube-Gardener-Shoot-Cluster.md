@@ -3,6 +3,8 @@ title: SpinKube on Gardener - Serverless WASM on Kubernetes
 linkTitle: SpinKube on Gardener - Serverless WASM on Kubernetes
 newsSubtitle: April 18, 2024
 publishdate: 2024-04-18
+
+date: 2024-04-18
 authors:
 - name: Dimitar Mirchev
   email: dimitar.mirchev@sap.com

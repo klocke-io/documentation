@@ -3,6 +3,8 @@ title: "Fine-Tuning kube-proxy Readiness: Ensuring Accurate Health Checks During
 linkTitle: "Fine-Tuning kube-proxy Readiness: Ensuring Accurate Health Checks During Node Scale-Down"
 newsSubtitle: May 21, 2025
 publishdate: 2025-05-21
+
+date: 2025-05-21
 authors:
 - avatar: https://avatars.githubusercontent.com/ScheererJ
   email: johannes.scheerer@sap.com

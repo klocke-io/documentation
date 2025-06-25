@@ -3,6 +3,8 @@ title: "Enhanced Node Management: Introducing In-Place Updates in Gardener"
 linkTitle: "Enhanced Node Management: Introducing In-Place Updates in Gardener"
 newsSubtitle: May 19, 2025
 publishdate: 2025-05-19
+
+date: 2025-05-19
 authors:
 - avatar: https://avatars.githubusercontent.com/shafeeqes
   email: shafeeque.e.s@sap.com

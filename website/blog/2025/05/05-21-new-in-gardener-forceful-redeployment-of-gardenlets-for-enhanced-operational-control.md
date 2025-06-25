@@ -3,6 +3,8 @@ title: "New in Gardener: Forceful Redeployment of gardenlets for Enhanced Operat
 linkTitle: "New in Gardener: Forceful Redeployment of gardenlets for Enhanced Operational Control"
 newsSubtitle: May 21, 2025
 publishdate: 2025-05-21
+
+date: 2025-05-21
 authors:
 - avatar: https://avatars.githubusercontent.com/shafeeqes
   email: shafeeque.e.s@sap.com

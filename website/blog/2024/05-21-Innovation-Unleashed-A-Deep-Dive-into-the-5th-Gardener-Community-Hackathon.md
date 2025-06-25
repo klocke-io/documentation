@@ -3,6 +3,8 @@ title: "Innovation Unleashed: A Deep Dive into the 5th Gardener Community Hackat
 linkTitle: "Innovation Unleashed: A Deep Dive into the 5th Gardener Community Hackathon"
 newsSubtitle: May 21, 2024
 publishdate: 2024-05-21
+
+date: 2024-05-21
 authors:
 - name: Rafael Franzke
   email: rafael.franzke@sap.com

@@ -3,6 +3,8 @@ title: "Gardener at KubeCon + CloudNativeCon Europe, London 2025"
 linkTitle: "Gardener at KubeCon + CloudNativeCon Europe, London 2025"
 newsSubtitle: Mar 18, 2025
 publishdate: 2025-03-18
+
+date: 2025-03-18
 authors:
 - name: Sonu Kumar Singh
   email: sonu.kumar.singh02@sap.com

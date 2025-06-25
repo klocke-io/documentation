@@ -3,6 +3,8 @@ title: "Gardener: Powering Enterprise Kubernetes at Scale and Europe's Sovereign
 linkTitle: "Gardener: Powering Enterprise Kubernetes at Scale and Europe's Sovereign Cloud Future"
 newsSubtitle: May 12, 2025
 publishdate: 2025-05-12
+
+date: 2025-05-12
 authors:
 - name: Vedran Lerenc
   email: vedran.lerenc@sap.com

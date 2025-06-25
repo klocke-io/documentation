@@ -3,6 +3,8 @@ title: High Availability and Zone Outage Toleration
 linkTitle: High Availability and Zone Outage Toleration
 newsSubtitle: March 27, 2023
 publishdate: 2023-03-27
+
+date: 2023-03-27
 authors:
 - name: Vedran Lerenc
   email: vedran.lerenc@sap.com
