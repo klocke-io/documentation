@@ -94,8 +94,9 @@ const vitePressOptions = {
       },
     ],
     editLink: {
-      pattern: ({frontmatter }) => {
-        const githubLink = `${frontmatter['github_repo']}/tree/master/${frontmatter['github_subdir']}/${frontmatter['path_base_for_github_subdir'].to}`
+      pattern: ({filePath, frontmatter }) => {
+        const fileName = `${frontmatter?.path_base_for_github_subdir?.to ?? filePath.split("/").pop()}`
+        const githubLink = `${frontmatter['github_repo']}/tree/master/${frontmatter['github_subdir']}/${fileName}`
         return githubLink
       },
       text: 'Edit this page on GitHub'
