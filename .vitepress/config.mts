@@ -35,7 +35,7 @@ const vitePressOptions = {
   head: [
     [
       'link',
-      {rel: 'icon', type: 'image/svg+xml', href: '/gardener-logo.svg'}
+      {rel: 'icon', type: 'image/svg+xml', href: '/documentation/gardener-logo.svg'}
     ],
     [
       'link',
