@@ -1,9 +1,28 @@
 import { defineConfig } from 'vitepress'
 import { fileURLToPath, URL } from 'node:url'
-import {withSidebar} from 'vitepress-sidebar'
+import {generateSidebar} from 'vitepress-sidebar'
+import blogSidebar from './theme/utils/blog-sidebar.ts'
+
+const communitySidebarConfig = {
+  documentRootPath: '/content',
+  scanStartPath: 'community',
+  resolvePath: '/community/',
+  collapsed: true,
+  capitalizeFirst: true,
+  useTitleFromFrontmatter: true,
+  useFolderTitleFromIndexFile: true,
+}
+const docsSidebarConfig = {
+  documentRootPath: '/content',
+  scanStartPath: 'docs',
+  resolvePath: '/docs/',
+  collapsed: true,
+  capitalizeFirst: true,
+  useTitleFromFrontmatter: true,
+}
 
 
-const vitePressOptions = {
+export default defineConfig({
   srcDir: './content',
   base: '/documentation',
   cleanUrls: true,
@@ -93,6 +112,13 @@ const vitePressOptions = {
         link: '/community/_index.md',
       },
     ],
+    sidebar: {
+      '/blog/': blogSidebar['/blog/'],
+      //@ts-ignore
+      '/community/': generateSidebar([communitySidebarConfig])['/community/'],
+      //@ts-ignore
+      '/docs/': generateSidebar([docsSidebarConfig])['/docs/'],
+    },
     editLink: {
       pattern: ({filePath, frontmatter }) => {
         const fileName = `${frontmatter?.path_base_for_github_subdir?.to ?? filePath.split("/").pop()}`
@@ -215,35 +241,36 @@ const vitePressOptions = {
     }
   },
 }
+)
 
-//https://vitepress-sidebar.cdget.com
-export default defineConfig(withSidebar(vitePressOptions, [
-  {
-    documentRootPath: '/content',
-    scanStartPath: 'blog',
-    resolvePath: '/blog/',
-    collapsed: false,
-    capitalizeFirst: true,
-    sortMenusByFrontmatterDate: true,
-    sortMenusOrderByDescending: true,
-    collapsed: true
-    // useTitleFromFrontmatter: true,
-  },
-  {
-    documentRootPath: '/content',
-    scanStartPath: 'community',
-    resolvePath: '/community/',
-    collapsed: false,
-    capitalizeFirst: true,
-    useTitleFromFrontmatter: true,
-    useFolderTitleFromIndexFile: true,
-  },
-  {
-    documentRootPath: '/content',
-    scanStartPath: 'docs',
-    resolvePath: '/docs/',
-    collapsed: true,
-    capitalizeFirst: true,
-    useTitleFromFrontmatter: true,
-  },
-]))
+////https://vitepress-sidebar.cdget.com
+//export default defineConfig(withSidebar(vitePressOptions, [
+//  {
+//    documentRootPath: '/content',
+//    scanStartPath: 'blog',
+//    resolvePath: '/blog/',
+//    collapsed: false,
+//    capitalizeFirst: true,
+//    sortMenusByFrontmatterDate: true,
+//    sortMenusOrderByDescending: true,
+//    collapsed: true
+//    // useTitleFromFrontmatter: true,
+//  },
+//  {
+//    documentRootPath: '/content',
+//    scanStartPath: 'community',
+//    resolvePath: '/community/',
+//    collapsed: false,
+//    capitalizeFirst: true,
+//    useTitleFromFrontmatter: true,
+//    useFolderTitleFromIndexFile: true,
+//  },
+//  {
+//    documentRootPath: '/content',
+//    scanStartPath: 'docs',
+//    resolvePath: '/docs/',
+//    collapsed: true,
+//    capitalizeFirst: true,
+//    useTitleFromFrontmatter: true,
+//  },
+//]))
