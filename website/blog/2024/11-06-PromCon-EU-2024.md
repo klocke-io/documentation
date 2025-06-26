@@ -15,6 +15,8 @@ authors:
 aliases: ["/blog/2024/11/06/01"]
 ---
 
+# PromCon EU 2024 Highlights
+
 ## Overview
 
 Many innovative observability and application performance management (APM) products and services were released over the last few years. They often adopt or enhance concepts that Prometheus invented more than a decade ago. However, Prometheus, as an open-source project, has never lost its importance in this fast-moving industry and is the core of Gardener's monitoring stack.
