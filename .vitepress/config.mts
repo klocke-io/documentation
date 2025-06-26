@@ -94,7 +94,10 @@ const vitePressOptions = {
       },
     ],
     editLink: {
-      pattern: 'https://github.com/klocke-io/documentation/tree/master/website/:path',
+      pattern: ({frontmatter }) => {
+        const githubLink = `${frontmatter['github_repo']}/tree/master/${frontmatter['github_subdir']}/${frontmatter['path_base_for_github_subdir'].to}`
+        return githubLink
+      },
       text: 'Edit this page on GitHub'
     },
     socialLinks: [
