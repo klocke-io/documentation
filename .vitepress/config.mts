@@ -24,7 +24,6 @@ const docsSidebarConfig = {
 
 export default defineConfig({
   srcDir: './content',
-  base: '/documentation',
   cleanUrls: true,
   //ToDo fix syntax issues for markdown files on build time
   srcExclude: [
