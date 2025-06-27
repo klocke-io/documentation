@@ -56,9 +56,6 @@ const userType = ref<string>('')
 const displayedItems = computed(() => {
   // Check for recognized userType that should override default sidebar
   if (userType.value && (userType.value === 'developer' || userType.value === 'user' || userType.value === 'operator')) {
-    console.log(`Using custom sidebar for user type: ${userType.value}`)
-    console.log(`sidebarData[userType.value as UserType]`, sidebarData[userType.value as UserType])
-    console.log(`sidebarData[userType.value as UserType].['/docs/'].items`, sidebarData[userType.value as UserType]['/docs/'].items[2].items[2])
     return sidebarData[userType.value as UserType]['/docs/'].items || props.items
   }
   
@@ -68,8 +65,7 @@ const displayedItems = computed(() => {
   } else {
     console.log('Using default sidebar from config')
   }
-  console.log('props.items', props.items)
-console.log('props.items[1].items[0]',props.items[1].items[0])
+
 
   return props.items
 })
@@ -94,13 +90,6 @@ const DEBUG = true
 const handleStorageChange = (event: StorageEvent) => {
   if (event.key === 'lastClickedMenuItem') {
     userType.value = event.newValue || ''
-    if (DEBUG) {
-      console.log(`[Storage Event] User type set to: "${userType.value}"`)
-      console.log(`[Storage Event] Will use custom sidebar: ${userType.value === 'developer' || userType.value === 'user' || userType.value === 'operator'}`)
-      if (userType.value === 'all') {
-        console.log('[Storage Event] Using ALL content (default sidebar)')
-      }
-    }
   }
 }
 
@@ -108,13 +97,6 @@ const handleStorageChange = (event: StorageEvent) => {
 const handleMenuItemClicked = (event: CustomEvent) => {
   if (event.detail && event.detail.value) {
     userType.value = event.detail.value
-    if (DEBUG) {
-      console.log(`[Custom Event] User type set to: "${userType.value}"`)
-      console.log(`[Custom Event] Will use custom sidebar: ${userType.value === 'developer' || userType.value === 'user' || userType.value === 'operator'}`)
-      if (userType.value === 'all') {
-        console.log('[Custom Event] Using ALL content (default sidebar)')
-      }
-    }
   }
 }
 

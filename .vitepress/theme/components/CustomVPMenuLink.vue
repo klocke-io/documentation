@@ -49,8 +49,6 @@ const handleClick = () => {
         window.dispatchEvent(new CustomEvent('menuItemClicked', { 
           detail: { value: userType }
         }))
-        
-        console.log(`Mapped "${itemText}" to user type: ${userType}`)
       } else {
         // If no mapping, just store the original text
         localStorage.setItem('lastClickedMenuItem', itemText)
