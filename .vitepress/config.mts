@@ -176,12 +176,18 @@ function getThemeConfig() {
       text: 'Edit this page on GitHub'
     },
     socialLinks: [
-      {icon: 'github', link: 'https://github.com/gardener'},
       {
-        icon: 'slack',
+        icon: { src: '/community/github-mark-logo-green.svg' },
+        link: 'https://github.com/gardener'
+      },
+      {
+        icon: { src: '/community/slack-logo-green.svg' },
         link: 'https://join.slack.com/t/gardener-cloud/shared_invite/zt-33c9daems-3oOorhnqOSnldZPWqGmIBw'
       },
-      {icon: 'youtube', link: 'https://www.youtube.com/@GardenerProject'}
+      {
+        icon: { src: '/community/youtube-logo-green.svg' },
+        link: 'https://www.youtube.com/@GardenerProject'
+      }
     ],
     search: getSearchConfig(),
   }
