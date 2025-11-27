@@ -8,13 +8,6 @@ hero:
   name: Gardener
   text: A Managed Kubernetes Service Done Right
   tagline: Deliver fully-managed clusters at scale everywhere with your own Gardener installation
-  actions:
-    - theme: brand
-      text: Demo
-      link: https://demo.gardener.cloud/login?redirectPath=/terminal
-    - theme: alt
-      text: Adopters
-      link: /adopter/_index.md
   image:
     src: /gardener-logo.svg
     alt: Gardener

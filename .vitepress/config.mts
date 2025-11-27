@@ -56,39 +56,52 @@ export default defineConfig({
 )
 function getNavConfig () {
   return [
-    {
-      text: 'Demo',
-      link: 'https://demo.gardener.cloud/',
-    },
-    {
-      text: 'Adopters',
-      link: '/adopter',
-      activeMatch: 'adopter',
-    },
-    {
-      component: 'VPNavbarMenuGroupWrapper',
-      props: {
-        text: 'Documentation',
-        link: '/docs/',
-        activeMatch: 'docs',
-        items: [
-          {text: 'User', link: '/docs/index.md',},
-          {text: 'Operator', link: '/docs/index.md',},
-          {text: 'Developer', link: '/docs/index.md',},
-          {text: 'All', link: '/docs/index.md',},
-        ],
+      {
+          text: 'Get started',
+          link: '/get-started',
       },
-    },
-    {
-      text: 'Blogs',
-      link: '/blog',
-      activeMatch: 'blog',
-    },
-    {
-      text: 'Community',
-      link: '/community',
-      activeMatch: 'community',
-    },
+      {
+          text: 'Concept',
+          link: '/adopter',
+          activeMatch: 'adopter',
+      },
+      {
+          text: 'Docs',
+          items: [
+              { text: 'Landscape operation', link: '/blog' },
+              { text: 'Shoot operation', link: '/docs/' },
+          ],
+          activeMatch: 'blog',
+      },
+      {
+          text: 'What\'s new',
+          link: '/new',
+          activeMatch: 'new',
+      },
+      {
+          text: 'Bio',
+          items: [
+              { text: 'Adopters', link: '/blog' },
+              { text: 'Case Studies', link: '/docs/' },
+              { text: 'Comparison', link: '/blog' },
+              { text: 'Governance', link: '/blog' },
+              { text: 'Ecosystem', link: '/docs/' },
+          ],
+          activeMatch: 'blog',
+      },
+      {
+          text: 'Contribute',
+          link: '/new',
+          activeMatch: 'new',
+      },
+      {
+          text: 'Reference',
+          items: [
+              { text: 'API', link: '/ref/api' },
+              { text: 'Examples', link: '/ref/exampl' },
+          ],
+          activeMatch: 'blog',
+      },
   ]
 }
 function getSearchConfig() {
