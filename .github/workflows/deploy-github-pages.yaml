@@ -34,6 +34,7 @@ jobs:
         run: make ci-build
         env:
           GITHUB_OAUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VITE_PUBLIC_BASE_PATH: ${{ github.repository != 'gardener/documentation' && '/documentation/' || '' }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
