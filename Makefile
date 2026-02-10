@@ -138,7 +138,7 @@ post-process: ## Run post-processing scripts
 
 .PHONY: build
 build: ## Build the documentation site
-	VITE_PUBLIC_BASE_PATH='' npx vitepress build
+	npx vitepress build
 
 .PHONY: test
 test: ## Run tests
