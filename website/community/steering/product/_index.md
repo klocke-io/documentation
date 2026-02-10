@@ -1,10 +1,9 @@
 ---
 title: Product Steering
-weight: 20
 ---
 
-## Product Steering
+# Product Steering
 
-Potential Topics:
-
-- **Control Plane Live Migration** ([paper](https://github.com/gardener/gardener/issues/10686), no date yet)
+| Date         | Title                                                   |
+|--------------|---------------------------------------------------------|
+| `2025-03-17` | [Scaling Recommender](./2025-03-scaling-recommender.md) |

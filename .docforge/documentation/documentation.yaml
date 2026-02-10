@@ -17,6 +17,13 @@ structure:
   - dir: security-and-compliance
     structure:
     - manifest: ./security-and-compliance.yaml
+    - file: _index.md
+      frontmatter:
+        title: Security and Compliance
+        description: Make sure that your clusters are compliant and secure
+        weight: 30
+        aliases: ["/docs/security-and-compliance/"]
+      source: https://github.com/gardener/.github/blob/main/SECURITY.md
     - file: https://github.com/gardener/diki/blob/main/docs/usage/disa-k8s-stig-shoot.md
       frontmatter:
         title: Run DISA K8s STIGs Ruleset
@@ -116,14 +123,6 @@ structure:
           frontmatter:
             title: Autoscaling
             weight: 20
-      - dir: high-availability
-        frontmatter:
-          aliases: ["/docs/gardener"]
-        structure:
-        - file: _index.md
-          frontmatter:
-            title: High Availability
-            weight: 30
       - dir: networking
         frontmatter:
           aliases: ["/docs/gardener"]
@@ -173,6 +172,10 @@ structure:
             title: Shoot Operations
             weight: 90
       - fileTree: https://github.com/gardener/gardener/tree/master/docs/usage
+        excludeFiles:
+          - "high-availability/shoot_high_availability_best_practices.md" # already included in ./guides.yaml, avoiding duplicates
+          - "high-availability/shoot_high_availability.md" # already included in ./guides.yaml, avoiding duplicates
+          - "autoscaling/shoot_pod_autoscaling_best_practices.md" # already included in ./guides.yaml, avoiding duplicates
   - dir: extensions
     structure:
     - file: _index.md
@@ -223,11 +226,3 @@ structure:
   - dir: contribute
     structure:
     - fileTree: /website/documentation/contribute
-    - dir: code
-      structure:
-      - dir: security-guide
-        structure:
-          - file: _index.md
-            frontmatter:
-              title: Security Release Process
-            source: https://github.com/gardener/.github/blob/main/SECURITY.md
