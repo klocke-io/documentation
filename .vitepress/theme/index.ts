@@ -17,7 +17,7 @@ export default {
     app.component('VPNavbarMenuGroupWrapper', VPNavbarMenuGroupWrapper)
     
     if (typeof window !== 'undefined') {
-      posthog.init('API KEy', {
+      posthog.init('phc_zYmm7RPD5YnDyWVuBE8z1uQKlBimlxHGrCfELNXfsTD', {
         api_host: 'https://eu.i.posthog.com',
         defaults: '2025-11-30'
       })
